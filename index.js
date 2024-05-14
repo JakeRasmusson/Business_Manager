@@ -4,7 +4,6 @@ const inquirerHelper = require('./modules/inquirer.js')
 
 async function questionsAsker(){
     const answers = await inquirerHelper(mainQuestions)
-    console.log(answers)
     const operation = answers.main
     mainMethods[operation]()
 }
