@@ -1,6 +1,7 @@
 const  inquirerHelper = require('./inquirer.js')
 const questionsAsker = require('../index.js')
-const { parseRoles, parseEmployees, parseDepartments } = require('../modules/updateQuestions.js')
+const { getRoles, getEmployees, getDepartments} = require('../lib/sql/queries.js')
+const { getCurrentData } = require('../modules/updateQuestions.js')
  
 const mainMethods = {
     'View All Departments' : function(){
@@ -20,7 +21,7 @@ const mainMethods = {
 
     },
     'Add a role' : async function(){
-        const deptOptions = await parseDepartments()
+        const deptOptions = await getCurrentData(getDepartments)
         const roleQuestions = [
             {
                 type: 'input',
@@ -65,8 +66,8 @@ const mainMethods = {
     },
 
     'Add An Employee' : async function(){
-        const roleOptions = await parseRoles()
-        const managerOptions = await parseEmployees()
+        const roleOptions = await getCurrentData(getRoles)
+        const managerOptions = await getCurrentData(getEmployees)
         const newEmployeeQuestions = [
             {
                 type: 'input',
@@ -109,8 +110,8 @@ const mainMethods = {
     },
 
     'Update an Employee Role': async function(){
-        const roleOptions = await parseRoles()
-        const employeeOptions = await parseEmployees()
+        const roleOptions = await getCurrentData(getRoles)
+        const employeeOptions = await getCurrentData(getEmployees)
         const updateEmployeeQuestions = [
             {
                 type: 'list',
@@ -140,7 +141,7 @@ const mainMethods = {
         console.log('Update an Employee Role Method')
 
     },
-    
+
     'Quit' : function(){
         console.log('See you next time.')
     }
@@ -164,7 +165,7 @@ const deptQuestions = [
         name: 'deptName',
         message: 'What is the name of the department?',
         validate: function(input){
-            if (input.length >= 3) {
+            if (input.length >= 2) {
                 return true
               } else {
                 return false
