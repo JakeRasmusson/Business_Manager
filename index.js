@@ -1,6 +1,6 @@
 const  inquirer = require('./node_modules/inquirer')
-const { mainMethods, mainQuestions } = require('./modules/questions.js')
-const inquirerHelper = require('./modules/inquirer.js')
+const { mainMethods, mainQuestions } = require('./lib/modules/questions.js')
+const inquirerHelper = require('./lib/modules/inquirer.js')
 
 async function questionsAsker(){
     const answers = await inquirerHelper(mainQuestions)
