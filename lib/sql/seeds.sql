@@ -3,7 +3,7 @@ VALUES ( 'Human Resources'),
 ( 'Maintenance' ),
 ( 'Information Technology' );
 
-INSERT INTO role ( title, salary, department_id ) 
+INSERT INTO employeerole ( title, salary, department_id ) 
 VALUES ( 'HR Specalist', 50000, 1 ),
 ( 'Maintenance Director', 60000, 2 ),
 ( 'IT Support Staff', 45000, 3 );

@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS department(
     name VARCHAR(30)
 );
 
-CREATE TABLE IF NOT EXISTS role(
+CREATE TABLE IF NOT EXISTS employeerole(
     id SERIAL PRIMARY KEY,
     title VARCHAR(30),
     salary DECIMAL,
@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS employee(
     manager_id int,
     CONSTRAINT fk_role
                 FOREIGN KEY(role_id)
-                        REFERENCES role(id),
+                        REFERENCES employeerole(id),
     CONSTRAINT fk_manager_id
                 FOREIGN KEY(manager_id)
                         REFERENCES employee(id)
